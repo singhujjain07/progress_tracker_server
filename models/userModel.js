@@ -21,7 +21,13 @@ const userSchema = new mongoose.Schema(
         },
         lcid : {
             type: String
-        }
+        },
+        githubUsername:{
+            type: String
+        },
+        githubAccessToken:{
+            type: String
+        },
     },{timestamps:true}
 )
 
