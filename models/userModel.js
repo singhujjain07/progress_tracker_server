@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema(
         lcid : {
             type: String
         },
+        about: {
+            type: String
+        },
         githubUsername:{
             type: String
         },

@@ -71,7 +71,8 @@ export const loginController = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 cfid: user.cfid,
-                lcid: user.lcid
+                lcid: user.lcid,
+                about: user.about
             },
             token
         })
@@ -122,6 +123,32 @@ export const updateLcController = async (req, res) => {
         res.status(400).send({
             success: false,
             message: 'Error in updating LC Id',
+            error
+        })
+    }
+}
+
+export const updateProfileController = async (req,res) =>{
+    try {
+        const {name,email,lcid,cfid,about} = req.body;
+        const user = await userModel.findById(req.user._id);
+        const updatedUser = await userModel.findByIdAndUpdate(req.user._id, {
+            name: name || user.name,
+            email: email || user.email,
+            about: about,
+            lcid: lcid,
+            cfid: cfid,
+        }, { new: true })
+        res.status(200).send({
+            success: true,
+            message: 'Profile Updated Successfully',
+            updatedUser
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error in updating profile".
             error
         })
     }
