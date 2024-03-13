@@ -2,7 +2,7 @@ import axios from 'axios'
 export const problemsByRatingController = async (req, res) => {
     try {
         const { handle } = req.query;
-        const response = await axios.get(`https://codeforces.com/api/user.status?handle=${handle}`);
+        const response = await axios.get(`${process.env.FORCES_USER_STATUS}${handle}`);
         res.json(response.data);
     } catch (error) {
         // console.log(error)
@@ -17,7 +17,7 @@ export const problemsByRatingController = async (req, res) => {
 export const ratingController = async (req, res) => {
     try {
         const { handle } = req.query;
-        const response = await axios.get(`https://codeforces.com/api/user.rating?handle=${handle}`);
+        const response = await axios.get(`${process.env.FORCES_USER_RATING}${handle}`);
         res.json(response.data);
     } catch (error) {
         // console.log(error)
@@ -32,7 +32,7 @@ export const ratingController = async (req, res) => {
 export const userInfoController = async (req, res) => {
     try {
         const { handle } = req.query;
-        const response = await axios.get(`https://codeforces.com/api/user.info?handles=${handle}`);
+        const response = await axios.get(`${process.env.FORCES_USER_INFO}${handle}`);
         res.json(response.data);
     } catch (error) {
         // console.log(error)

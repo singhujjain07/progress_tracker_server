@@ -5,8 +5,8 @@ import { problemsByRatingController, ratingController, userInfoController } from
 const router = express.Router();
 
 // get problems
-router.get('/problems',problemsByRatingController);
-router.get('/rating',ratingController)
+router.get('/problems',problemsByRatingController); //working
+router.get('/rating',ratingController) //working
 router.get('/user-info',userInfoController)
 
 
